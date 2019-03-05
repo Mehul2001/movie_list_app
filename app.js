@@ -5,10 +5,10 @@ const port = 3000;
 
 
 app.get("/results", (req, res) => {
-    request("http://www.omdbapi.com/?s=star&apikey=thewdb", (error, response, body) => {
+    request("http://www.omdbapi.com/?s=iowa&apikey=thewdb", (error, response, body) => {
         if (!error && response.statusCode === 200) {
-            const results = JSON.parse(body);
-            res.send(results.Search[0]);
+            const data = JSON.parse(body);
+            res.render("results.ejs", { data })
         }
     })
 })
